@@ -25,11 +25,7 @@ def pregunta_09():
 
     """
     df = pd.read_csv("files/input/tbl0.tsv", sep="\t")
-    
-    # Agregar la columna 'año' con un valor predeterminado (asumimos que 'c3' contiene una fecha)
-    df["año"] = pd.to_datetime(df["c3"]).dt.year  
 
-    return df  # Retornamos el DataFrame con la nueva columna
+    df["year"] = df["c3"].str[:4] 
 
-# Llamar a la función y mostrar el resultado
-print(pregunta_09())
+    return df  

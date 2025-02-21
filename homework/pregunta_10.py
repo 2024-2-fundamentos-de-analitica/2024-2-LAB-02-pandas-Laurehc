@@ -23,11 +23,7 @@ def pregunta_10():
     """
     df = pd.read_csv("files/input/tbl0.tsv", sep="\t")   
 
-    # Ordeanar c2 en la tabla   
     tabla = df.groupby('c1')['c2'].apply(lambda x: ':'.join(map(str, sorted(x)))).reset_index()        
     tabla.set_index('c1', inplace=True)
     
-    return tabla  # Retorna el DataFrame sin resetear el índice
-
-# Llamar a la función y mostrar el resultado
-print(pregunta_10())
+    return tabla  

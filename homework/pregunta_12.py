@@ -25,8 +25,8 @@ def pregunta_12():
     """
     df = pd.read_csv("files/input/tbl2.tsv", sep="\t")
     
-    df["c5_comb"] = df["c5a"].astype(str) + ":" + df["c5b"].astype(str)
+    df['c5'] = df['c5a'].astype(str) + ':' + df['c5b'].astype(str)
 
-    tabla = df.groupby("c0")["c5_comb"].apply(lambda x: ",".join(sorted(x))).reset_index()
+    tabla = df.sort_values(by=['c0', 'c5a']).groupby('c0')['c5'].apply(lambda x: ','.join(x)).reset_index()
 
     return tabla  
