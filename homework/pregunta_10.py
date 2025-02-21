@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
 
 def pregunta_10():
     """
@@ -20,3 +21,12 @@ def pregunta_10():
     D                   1:2:3:5:5:7
     E   1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
+    df = pd.read_csv("files/input/tbl0.tsv", sep="\t")
+    
+    # Agrupar por 'c1' y concatenar los valores de 'c2' en un solo string separado por ':'
+    tabla = df.groupby("c1")["c2"].apply(lambda x: ":".join(map(str, sorted(x)))).reset_index()
+
+    return tabla  # Retornamos el DataFrame con la nueva estructura
+
+# Llamar a la función y mostrar el resultado
+print(pregunta_10())
